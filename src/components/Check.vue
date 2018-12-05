@@ -31,6 +31,7 @@
               >
                 Check
               </v-btn>
+              <v-icon v-if="submit && isCheck === false" large color="red darken-2">mdi-close</v-icon>
               <div v-if="isCheck">
                 <v-alert :value="true" :type="result.compensation.burn === 0 ? 'warning' : 'success'" style="color: #616161;" v-if="result.type === 'Coal'">
                   type: <b>{{result.type}}</b><br />
@@ -68,7 +69,8 @@ export default {
       valid: false,
       liability: '',
       requireRule: [
-        v => !!v || 'Field required'
+        v => !!v || 'Field required',
+        v => web3.isAddress(v) || 'Wrong address'
       ],
       result: {}
     }
@@ -134,6 +136,11 @@ export default {
               this.loadingCheck = false
               this.isCheck = false
             }
+          })
+          .catch(() => {
+            this.submit = true
+            this.loadingCheck = false
+            this.isCheck = false
           })
       }
     }
