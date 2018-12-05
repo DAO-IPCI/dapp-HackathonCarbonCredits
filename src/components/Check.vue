@@ -31,13 +31,6 @@
                 Check
               </v-btn>
               <v-icon v-if="submit && isCheck === false" large color="red darken-2">mdi-close</v-icon>
-              <v-divider class="my-3" />
-              <div>
-                <h3>Example:</h3>
-                Contract with energy web blockchain tx - [<b>0xaDD5AAFCc5779338Fd809B740f8cc0606A804275</b>]<br />
-                Contract with DAO IPCI on Ethereum mainnet tx - [<b>0x522142dcb90d014b071D77d522817eE27be2342F</b>]
-              </div>
-              <v-divider class="my-3" />
               <div v-if="isCheck">
                 <v-alert :value="true" :type="result.compensation.burn === 0 ? 'warning' : 'success'" style="color: #616161;" v-if="result.type === 'Coal'">
                   type: <b>{{result.type}}</b><br />
@@ -52,6 +45,12 @@
                   proof: <b><a :href="`https://tobalaba.etherscan.com/address/${result.proof}`" style="color: #616161;" target="_blank">{{result.proof}}</a></b><br />
                   quantity: <b>{{result.quantity}}</b>
                 </v-alert>
+              </div>
+              <v-divider class="my-3" />
+              <div>
+                <h3>Example:</h3>
+                Contract with energy web blockchain tx - [<b>0xaDD5AAFCc5779338Fd809B740f8cc0606A804275</b>]<br />
+                Contract with DAO IPCI on Ethereum mainnet tx - [<b>0x522142dcb90d014b071D77d522817eE27be2342F</b>]
               </div>
             </v-card-text>
           </v-card>
